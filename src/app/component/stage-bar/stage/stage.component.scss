@@ -1,0 +1,26 @@
+$enabled-color: green;
+$disabled-color: gray;
+
+.name {
+    text-align: center;
+}
+
+.enabled-name {
+    color: $enabled-color;
+}
+
+.disabled-name {
+    color: $disabled-color;
+}
+
+.disabled-bar {
+    height: 0.5vw;
+    width: 90%;
+    background-color: $disabled-color;
+}
+
+.enabled-bar {
+    height: 0.5vw;
+    width: 90%;
+    background-color: $enabled-color;
+}

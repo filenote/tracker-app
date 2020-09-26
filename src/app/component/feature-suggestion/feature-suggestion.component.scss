@@ -1,0 +1,23 @@
+.feature-container {
+    border-style: groove;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.title-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.title {
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}

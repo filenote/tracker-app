@@ -1,0 +1,9 @@
+<span *ngIf="isEnabled(); else notEnabled">
+    <div class="name enabled-name">{{stageDetails.name}}</div>
+    <div class="center enabled-bar"></div>
+</span>
+
+<ng-template #notEnabled>
+    <div class="name disabled-name">{{stageDetails.name}}</div>
+    <div class="center disabled-bar"></div>
+</ng-template>
