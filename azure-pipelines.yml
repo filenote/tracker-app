@@ -26,4 +26,4 @@ steps:
     azureSubscription: 'Pay-As-You-Go(960ccf83-8e22-4f3c-87c4-450a61d57eb2)'
     appType: 'webAppLinux'
     WebAppName: 'ng-tracker-app'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/dist/'
+    packageForLinux: 'dist/ng-tracker'
