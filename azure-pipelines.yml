@@ -24,9 +24,6 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Pay-As-You-Go(960ccf83-8e22-4f3c-87c4-450a61d57eb2)'
-    appType: 'webAppLinux'
-    WebAppName: 'ng-tracker-app'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'tracker-app-rg'
-    SlotName: 'other'
+    appType: 'webApp'
+    WebAppName: 'tracker-app-win'
     packageForLinux: 'dist/ng-tracker'
