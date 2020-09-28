@@ -49,5 +49,4 @@ export class FeatureSuggestionComponent implements OnInit {
 
     return R.slice(start, end, stages);
   }
-
 }

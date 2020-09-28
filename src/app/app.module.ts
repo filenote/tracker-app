@@ -17,6 +17,9 @@ import { AddSuggestionComponent } from './component/add-suggestion/add-suggestio
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { SimpleTrackerComponent } from './component/simple-tracker/simple-tracker.component';
+
 
 
 
@@ -29,7 +32,8 @@ import {MatInputModule} from '@angular/material/input';
     FeatureSuggestionComponent,
     StageBarComponent,
     StageComponent,
-    AddSuggestionComponent
+    AddSuggestionComponent,
+    SimpleTrackerComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule
   ],
   entryComponents: [
     AddSuggestionComponent

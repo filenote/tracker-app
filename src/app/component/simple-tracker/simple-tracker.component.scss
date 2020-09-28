@@ -1,0 +1,20 @@
+.title-bar {
+    display: flex;
+    align-items: center;
+
+    // .title-header {
+    //     justify-self: flex-start;
+    // }
+
+    h1.title-header {
+        margin-left: auto;
+        margin-bottom: 0;
+        padding: .5em;
+        display: inline-block;
+    }
+
+    .add-button {
+        outline: none;
+        margin-left: auto;
+    }
+}

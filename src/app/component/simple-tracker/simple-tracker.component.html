@@ -1,0 +1,7 @@
+<div class="title-bar">
+    <h1 class="title-header">Simple Tracker</h1>
+    <button class="add-button" mat-icon-button color="green" (click)="addSuggestion()">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>
+<app-feature-suggestion *ngFor="let suggestion of suggestions" [suggestion]="suggestion"></app-feature-suggestion>
