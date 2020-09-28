@@ -37,14 +37,17 @@ export class FeatureSuggestionComponent implements OnInit {
   latestStage(stages: Stage[]): Stage[] {
     const reversedIndex = R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true);
     const latestIndex = stages.length - reversedIndex - 1;
-    if (latestIndex <= 1) { return R.slice(0, 3, stages); }
-    if (latestIndex >= stages.length - 2) {
-      return R.slice(stages.length - 3, stages.length, stages);
+    let start = latestIndex - 1;
+    if (start <= 0) {
+      start = 0;
     }
-    return R.slice(latestIndex - 1, latestIndex + 2, stages);
-    // console.log(stages[latestIndex]);
-    // // const ret = [stages[latestIndex], stages[latestIndex - 1], stages[latestIndex - 2]];
-    // return [R.reverse(stages).find(stage => stage.enabled)];
+    let end = start + 3;
+    if (end > stages.length) {
+      start = stages.length - 3;
+      end = stages.length;
+    }
+
+    return R.slice(start, end, stages);
   }
 
 }
