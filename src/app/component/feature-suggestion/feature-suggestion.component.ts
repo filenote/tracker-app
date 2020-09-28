@@ -19,4 +19,12 @@ export class FeatureSuggestionComponent implements OnInit {
     this.stages = this.suggestion.stages;
   }
 
+  addVote(id) {
+    console.log('adding vote ' + id)
+  }
+
+  removeVote(id) {
+    console.log('removing vote ' + id);
+  }
+
 }

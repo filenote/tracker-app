@@ -1,7 +1,15 @@
 <div class="feature-container">
     <div class="title-bar">
         <h2 class="title">{{suggestion.title}}</h2>
-        <mat-icon class="thumb-up icon">thumb_up</mat-icon>
+        <div class="icon">
+            <button mat-icon-button color="primary" (click)="removeVote(suggestion.id)" *ngIf="suggestion.vote.voted">
+                <mat-icon class="thumb-up">thumb_up</mat-icon>
+            </button>            
+            <button mat-icon-button (click)="addVote(suggestion.id)" *ngIf="!suggestion.vote.voted">
+                <mat-icon class="thumb-up">thumb_up</mat-icon>
+            </button>
+            <span class="amount">{{suggestion.vote.amount}}</span>
+        </div>
     </div>
     <p>{{suggestion.description}}</p>
     <app-stage-bar [stagesInfo]="stages"></app-stage-bar>
