@@ -10,6 +10,15 @@ import { SuggestionService } from 'src/app/service/suggestion.service';
 })
 export class AddSuggestionComponent implements OnInit {
 
+  powers = ['Really Smart', 'Super Flexible',
+  'Super Hot', 'Weather Changer'];
+
+  submitSuggestionForm = this.fb.group({
+    title: ['', [Validators.required]],
+    description: ['',[ Validators.required]],
+    email: ['', [Validators.required, Validators.email]]
+  });
+
   constructor(
     private fb: FormBuilder,
     private suggestionService: SuggestionService,
@@ -19,26 +28,15 @@ export class AddSuggestionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  powers = ['Really Smart', 'Super Flexible',
-  'Super Hot', 'Weather Changer'];
-
-  submitSuggestionForm = this.fb.group({
-    title: ['', [Validators.required]],
-    description: ['',[ Validators.required]],
-    email: ['', [Validators.required, Validators.email]]
-  })
-
-
-  onSubmit() { 
+  onSubmit(): void { 
     if (this.submitSuggestionForm.valid) {
       this.suggestionService.insertSuggestion({
         title: this.submitSuggestionForm.get('title').value,
         description: this.submitSuggestionForm.get('description').value,
         email: this.submitSuggestionForm.get('email').value
       }).subscribe((response) => {
-        this.dialogRef.close('Closing dialog')
-        console.log(response);
-      })
+        this.dialogRef.close(response);
+      });
     }
   }
 }

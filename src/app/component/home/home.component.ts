@@ -23,13 +23,19 @@ export class HomeComponent implements OnInit {
       .subscribe((response: Suggestion[]) => {
         console.log(response)
         this.suggestions = response;
-      })
+      });
   }
 
-  addSuggestion() {
+  addSuggestion(): void {
     const dialogRef = this.dialog.open(AddSuggestionComponent, {
         width: '50%',
       });
+
+    dialogRef.afterClosed().subscribe(response => {
+      if (response != null) {
+      this.suggestions.push(response);
+      }
+    });
   }
 
 }
