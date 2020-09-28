@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Suggestion } from '../../datamodel/suggestion';
 import { Stage } from '../../datamodel/stage';
 import * as R from 'ramda';
+import { SuggestionService } from 'src/app/service/suggestion.service';
 
 @Component({
   selector: 'app-feature-suggestion',
@@ -14,14 +15,19 @@ export class FeatureSuggestionComponent implements OnInit {
 
   stages: Stage[];
 
-  constructor() { }
+  constructor(
+    private suggestionService: SuggestionService
+  ) { }
 
   ngOnInit(): void {
     this.stages = this.suggestion.stages;
   }
 
   addVote(id) {
-    console.log('adding vote ' + id)
+    this.suggestionService.addVoteToSuggestion({id: id})
+      .subscribe((response: Suggestion) => {
+        this.suggestion.vote.amount = response.vote.amount;
+      })
   }
 
   removeVote(id) {

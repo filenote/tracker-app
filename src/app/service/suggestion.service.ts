@@ -31,6 +31,11 @@ export class SuggestionService {
         email: email
       });
   }
+
+  addVoteToSuggestion({id}) {
+    let url = environment.dataserviceUrl + '/api/suggestion/' + id + '/upvote';
+    return this.http.post(url, {});
+  }
   // insertSuggestion(suggestion: Suggestion) {
   //   let url = environment.dataserviceUrl + '/api/suggestion';
     
