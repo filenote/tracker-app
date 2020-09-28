@@ -12,9 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddSuggestionComponent } from './component/add-suggestion/add-suggestion.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     FeatureSuggestionComponent,
     StageBarComponent,
-    StageComponent
+    StageComponent,
+    AddSuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

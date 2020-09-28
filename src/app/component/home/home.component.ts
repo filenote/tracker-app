@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Stage } from '../../datamodel/stage';
+import { MatDialog } from '@angular/material/dialog';
 import { Suggestion } from '../../datamodel/suggestion';
 import { SuggestionService } from '../../service/suggestion.service';
+import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.component'
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   suggestions: Suggestion[];
   
   constructor(
-    private suggestionService: SuggestionService
+    private suggestionService: SuggestionService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,12 @@ export class HomeComponent implements OnInit {
       .subscribe((response: Suggestion[]) => {
         this.suggestions = response;
       })
+  }
+
+  addSuggestion() {
+      const dialogRef = this.dialog.open(AddSuggestionComponent);
+
+      
   }
 
 }
