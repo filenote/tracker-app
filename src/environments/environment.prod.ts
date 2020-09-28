@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  dataserviceUrl: 'https://tracker-ds.azurewebsites.net/'
 };
