@@ -23,19 +23,28 @@ export class FeatureSuggestionComponent implements OnInit {
     this.stages = this.suggestion.stages;
   }
 
-  addVote(id) {
-    this.suggestionService.addVoteToSuggestion({id: id})
+  addVote(id): void {
+    this.suggestionService.addVoteToSuggestion({id})
       .subscribe((response: Suggestion) => {
         this.suggestion.vote.amount = response.vote.amount;
-      })
+      });
   }
 
-  removeVote(id) {
+  removeVote(id): void {
     console.log('removing vote ' + id);
   }
 
-  latestStage(stages: Stage[]) {
-    return [R.reverse(stages).find(stage => stage.enabled)]
+  latestStage(stages: Stage[]): Stage[] {
+    const reversedIndex = R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true);
+    const latestIndex = stages.length - reversedIndex - 1;
+    if (latestIndex <= 1) { return R.slice(0, 3, stages); }
+    if (latestIndex >= stages.length - 2) {
+      return R.slice(stages.length - 3, stages.length, stages);
+    }
+    return R.slice(latestIndex - 1, latestIndex + 2, stages);
+    // console.log(stages[latestIndex]);
+    // // const ret = [stages[latestIndex], stages[latestIndex - 1], stages[latestIndex - 2]];
+    // return [R.reverse(stages).find(stage => stage.enabled)];
   }
 
 }

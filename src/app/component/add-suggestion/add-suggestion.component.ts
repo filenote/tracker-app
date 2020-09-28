@@ -10,12 +10,9 @@ import { SuggestionService } from 'src/app/service/suggestion.service';
 })
 export class AddSuggestionComponent implements OnInit {
 
-  powers = ['Really Smart', 'Super Flexible',
-  'Super Hot', 'Weather Changer'];
-
   submitSuggestionForm = this.fb.group({
     title: ['', [Validators.required]],
-    description: ['',[ Validators.required]],
+    description: ['', [ Validators.required ]],
     email: ['', [Validators.required, Validators.email]]
   });
 
@@ -28,7 +25,7 @@ export class AddSuggestionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): void { 
+  onSubmit(): void {
     if (this.submitSuggestionForm.valid) {
       this.suggestionService.insertSuggestion({
         title: this.submitSuggestionForm.get('title').value,
