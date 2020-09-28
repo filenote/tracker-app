@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Suggestion } from '../../datamodel/suggestion';
 import { Stage } from '../../datamodel/stage';
+import * as R from 'ramda';
 
 @Component({
   selector: 'app-feature-suggestion',
@@ -25,6 +26,10 @@ export class FeatureSuggestionComponent implements OnInit {
 
   removeVote(id) {
     console.log('removing vote ' + id);
+  }
+
+  latestStage(stages: Stage[]) {
+    return [R.reverse(stages).find(stage => stage.enabled)]
   }
 
 }

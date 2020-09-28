@@ -12,5 +12,10 @@
         </div>
     </div>
     <p>{{suggestion.description}}</p>
-    <app-stage-bar [stagesInfo]="stages"></app-stage-bar>
+    <span class="content-desktop">
+        <app-stage-bar [stagesInfo]="stages"></app-stage-bar>
+    </span>
+    <span class="content-mobile">
+        <app-stage-bar [stagesInfo]="latestStage(stages)"></app-stage-bar>
+    </span>
 </div>
