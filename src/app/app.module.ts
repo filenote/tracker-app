@@ -12,8 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { AddSuggestionComponent } from './component/add-suggestion/add-suggestion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+
+
 
 @NgModule({
   declarations: [
@@ -32,9 +38,21 @@ import { AddSuggestionComponent } from './component/add-suggestion/add-suggestio
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [],
+  entryComponents: [
+    AddSuggestionComponent
+  ],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

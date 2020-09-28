@@ -21,14 +21,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.suggestionService.getAllSuggestions()
       .subscribe((response: Suggestion[]) => {
+        console.log(response)
         this.suggestions = response;
       })
   }
 
   addSuggestion() {
-      const dialogRef = this.dialog.open(AddSuggestionComponent);
-
-      
+    const dialogRef = this.dialog.open(AddSuggestionComponent, {
+        width: '50%',
+      });
   }
 
 }

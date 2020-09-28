@@ -22,9 +22,18 @@ export class SuggestionService {
     return this.http.get(url,options);
   }
 
-  insertSuggestion(suggestion: Suggestion) {
+  insertSuggestion({title, description, email}) {
     let url = environment.dataserviceUrl + '/api/suggestion';
-    
-    return this.http.post(url, suggestion);
+    return this.http.post(url, 
+      {
+        title: title,
+        description: description,
+        email: email
+      });
   }
+  // insertSuggestion(suggestion: Suggestion) {
+  //   let url = environment.dataserviceUrl + '/api/suggestion';
+    
+  //   return this.http.post(url, suggestion);
+  // }
 }

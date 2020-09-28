@@ -1,1 +1,19 @@
-<p>add-suggestion works!</p>
+<h2>Submit Suggestion</h2>
+<form class="submit-suggestion-form" [formGroup]="submitSuggestionForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width-form" appearance="standard">
+        <mat-label>Title</mat-label>
+        <input matInput required formControlName="title">
+    </mat-form-field>
+        
+    <mat-form-field class="full-width-form" appearance="standard">
+        <mat-label>Description</mat-label>
+        <textarea matInput required formControlName="description"></textarea>
+    </mat-form-field>
+    
+    <mat-form-field class="full-width-form" appearance="standard">
+        <mat-label>Email</mat-label>
+        <input matInput required email formControlName="email">
+    </mat-form-field>
+    <button type="submit" class="btn btn-dark btn-block">Submit</button>
+
+</form>
