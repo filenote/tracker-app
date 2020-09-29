@@ -3,6 +3,7 @@ import { Suggestion } from 'src/app/datamodel/suggestion';
 import { MatDialog } from '@angular/material/dialog';
 import { SuggestionService } from 'src/app/service/suggestion.service';
 import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.component';
+import { constants } from '../../common/constants'
 
 @Component({
   selector: 'app-simple-tracker',
@@ -27,11 +28,7 @@ export class SimpleTrackerComponent implements OnInit {
   }
 
   addSuggestion(): void {
-    const dialogRef = this.dialog.open(AddSuggestionComponent, {
-        maxWidth: '100vw',
-        maxHeight: '100vh',
-        width: '750px'
-      });
+    const dialogRef = this.dialog.open(AddSuggestionComponent, constants.dialogOptions);
 
     dialogRef.afterClosed().subscribe(response => {
       if (response != null) {
