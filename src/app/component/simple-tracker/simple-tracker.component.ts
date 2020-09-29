@@ -28,7 +28,9 @@ export class SimpleTrackerComponent implements OnInit {
 
   addSuggestion(): void {
     const dialogRef = this.dialog.open(AddSuggestionComponent, {
-        width: '50%',
+        maxWidth: '100vw',
+        maxHeight: '100vh',
+        width: '750px'
       });
 
     dialogRef.afterClosed().subscribe(response => {
