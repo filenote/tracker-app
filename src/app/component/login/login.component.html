@@ -1,0 +1,19 @@
+<h2>Login</h2>
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width-form" appearance="standard">
+        <mat-label>Username</mat-label>
+        <input matInput required formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field class="full-width-form" appearance="standard">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput required formControlName="password">
+    </mat-form-field>
+
+    <div class="sub-button" style="display:flex; justify-content:flex-end;">
+        <button mat-button type="submit" color="primary">Login</button>
+    </div>
+</form>
+<div class="register-footer" style="display:flex; justify-content: center;">
+    <span>Not registered? <span class="link" (click)="openRegistration()">Sign-up</span></span>
+</div>

@@ -13,7 +13,7 @@ export class SuggestionService {
   ) { }
 
   getAllSuggestions() {
-    let url = environment.dataserviceUrl + '/api/suggestion';
+    let url = `${environment.dataserviceUrl}/api/suggestion`;
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ export class SuggestionService {
   }
 
   insertSuggestion({title, description, email}) {
-    let url = environment.dataserviceUrl + '/api/suggestion';
+    let url = `${environment.dataserviceUrl}/api/suggestion`;
     return this.http.post(url, 
       {
         title: title,
@@ -33,7 +33,7 @@ export class SuggestionService {
   }
 
   addVoteToSuggestion({id}) {
-    let url = environment.dataserviceUrl + '/api/suggestion/' + id + '/upvote';
+    let url = `${environment.dataserviceUrl}/api/suggestion/${id}/upvote`;
     return this.http.post(url, {});
   }
   // insertSuggestion(suggestion: Suggestion) {

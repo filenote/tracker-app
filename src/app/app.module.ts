@@ -11,7 +11,7 @@ import { StageComponent } from './component/stage-bar/stage/stage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { AddSuggestionComponent } from './component/add-suggestion/add-suggestion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SimpleTrackerComponent } from './component/simple-tracker/simple-tracker.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 
@@ -33,7 +36,9 @@ import { SimpleTrackerComponent } from './component/simple-tracker/simple-tracke
     StageBarComponent,
     StageComponent,
     AddSuggestionComponent,
-    SimpleTrackerComponent
+    SimpleTrackerComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,11 @@ import { SimpleTrackerComponent } from './component/simple-tracker/simple-tracke
     {
       provide: MatDialogRef,
       useValue: {}
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  dataserviceUrl: 'http://localhost:8080/'
+  dataserviceUrl: 'http://localhost:8080'
 };
 
 /*
