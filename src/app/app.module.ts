@@ -25,6 +25,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
+import { TimeagoModule } from 'ngx-timeago';
 
 
 
@@ -61,7 +62,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatToolbarModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    TimeagoModule.forRoot()
     
   ],
   entryComponents: [

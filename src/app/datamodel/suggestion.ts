@@ -6,5 +6,6 @@ export interface Suggestion {
     id: string,
     description: string,
     vote: Vote,
-    stages: Stage[]
+    stages: Stage[],
+    createdDate: Date
 }
