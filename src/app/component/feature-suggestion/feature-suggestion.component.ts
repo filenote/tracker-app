@@ -54,4 +54,8 @@ export class FeatureSuggestionComponent implements OnInit {
   parse(date: string): number {
     return Date.parse(date);
   }
+
+  getWordCount(str: string): number {
+    return R.split(' ', str).length;
+  }
 }

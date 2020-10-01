@@ -26,6 +26,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import { TimeagoModule } from 'ngx-timeago';
+import { TruncateModule } from '@yellowspot/ng-truncate';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+
 
 @NgModule({
   declarations: [
@@ -56,7 +60,9 @@ import { TimeagoModule } from 'ngx-timeago';
     MatToolbarModule,
     MatDividerModule,
     MatCardModule,
-    TimeagoModule.forRoot()
+    TimeagoModule.forRoot(),
+    TruncateModule,
+    MatExpansionModule
   ],
   entryComponents: [
     AddSuggestionComponent
