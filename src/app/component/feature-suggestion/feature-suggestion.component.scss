@@ -8,22 +8,28 @@
 }
 
 .button-field {
-    margin-right: 1em;
+    margin-right: .5em;
+    margin-left: .5em;
 }
 
 .button-label {
     font-size: 12px;
 }
 
+.actions-container {
+    display: flex;
+}
 
+.stages-container {
+    flex-grow: 1;
+}
 
-
-.content-desktop {display: block;}
+.content-desktop {display: inline;}
 .content-mobile {display: none;}
 
 @media screen and (max-width: 768px) {
 
     .content-desktop {display: none;}
-    .content-mobile {display: block;}
+    .content-mobile {display: inline;}
 
 }
