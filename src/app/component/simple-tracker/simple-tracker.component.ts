@@ -3,7 +3,9 @@ import { Suggestion } from 'src/app/datamodel/suggestion';
 import { MatDialog } from '@angular/material/dialog';
 import { SuggestionService } from 'src/app/service/suggestion.service';
 import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.component';
-import { constants } from '../../common/constants'
+import { constants } from '../../common/constants';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-simple-tracker',
@@ -22,7 +24,6 @@ export class SimpleTrackerComponent implements OnInit {
   ngOnInit(): void {
     this.suggestionService.getAllSuggestions()
       .subscribe((response: Suggestion[]) => {
-        console.log(response);
         this.suggestions = response;
       });
   }

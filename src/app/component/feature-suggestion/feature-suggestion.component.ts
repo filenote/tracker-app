@@ -20,6 +20,7 @@ export class FeatureSuggestionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(typeof this.suggestion.createdDate);
     this.stages = this.suggestion.stages;
   }
 
@@ -48,5 +49,9 @@ export class FeatureSuggestionComponent implements OnInit {
     }
 
     return R.slice(start, end, stages);
+  }
+
+  parse(date: string): number {
+    return Date.parse(date);
   }
 }

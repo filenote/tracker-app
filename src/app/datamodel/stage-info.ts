@@ -1,4 +1,4 @@
 export interface StageInfo {
-    stages: [string],
-    currentStage: number
+    stages: [string];
+    currentStage: number;
 }

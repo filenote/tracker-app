@@ -12,15 +12,13 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  public isLoggedIn: boolean = false;
-
-  login(username: string, password: string): Observable<Object> {
-    let url = `${environment.dataserviceUrl}/login`;
+  login(username: string, password: string): Observable<object> {
+    const url = `${environment.dataserviceUrl}/login`;
     return this.http.post(url, {username, password}, {observe: 'response'});
   }
 
-  register(username: string, password: string): Observable<Object> {
-    let url = `${environment.dataserviceUrl}/api/account/register`;
+  register(username: string, password: string): Observable<object> {
+    const url = `${environment.dataserviceUrl}/api/account/register`;
     return this.http.post(url, {username, password}, {observe: 'response'});
   }
 }

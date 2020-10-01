@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,33 +12,23 @@ export class SuggestionService {
     private http: HttpClient
   ) { }
 
-  getAllSuggestions() {
-    let url = `${environment.dataserviceUrl}/api/suggestion`;
-    let options = {
+  getAllSuggestions(): Observable<object> {
+    const url = `${environment.dataserviceUrl}/api/suggestion`;
+    const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
-    }
-    return this.http.get(url,options);
+    };
+    return this.http.get(url, options);
   }
 
-  insertSuggestion({title, description, email}) {
-    let url = `${environment.dataserviceUrl}/api/suggestion`;
-    return this.http.post(url, 
-      {
-        title: title,
-        description: description,
-        email: email
-      });
+  insertSuggestion({title, description, email}): Observable<object>  {
+    const url = `${environment.dataserviceUrl}/api/suggestion`;
+    return this.http.post(url, { title, description, email });
   }
 
-  addVoteToSuggestion({id}) {
-    let url = `${environment.dataserviceUrl}/api/suggestion/${id}/upvote`;
+  addVoteToSuggestion({id}): Observable<object>  {
+    const url = `${environment.dataserviceUrl}/api/suggestion/${id}/upvote`;
     return this.http.post(url, {});
   }
-  // insertSuggestion(suggestion: Suggestion) {
-  //   let url = environment.dataserviceUrl + '/api/suggestion';
-    
-  //   return this.http.post(url, suggestion);
-  // }
 }

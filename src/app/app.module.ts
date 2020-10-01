@@ -27,13 +27,6 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import { TimeagoModule } from 'ngx-timeago';
 
-
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +57,6 @@ import { TimeagoModule } from 'ngx-timeago';
     MatDividerModule,
     MatCardModule,
     TimeagoModule.forRoot()
-    
   ],
   entryComponents: [
     AddSuggestionComponent

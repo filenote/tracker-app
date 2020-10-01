@@ -1,4 +1,4 @@
 export interface Vote {
-    voted: boolean,
-    amount: number
+    voted: boolean;
+    amount: number;
 }

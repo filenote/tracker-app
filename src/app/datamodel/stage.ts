@@ -1,4 +1,4 @@
 export interface Stage {
-    enabled: boolean,
-    name: string
+    enabled: boolean;
+    name: string;
 }

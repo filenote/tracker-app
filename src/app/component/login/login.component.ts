@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]]
-  })
+  });
 
   constructor(
     private fb: FormBuilder,
@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
         if (response.status === 200 && authorization) {
           const token = R.split('Bearer ', authorization)[1];
           localStorage.setItem('token', token);
-          this.authService.isLoggedIn = true;
-          this.dialogRef.close()
+          this.dialogRef.close();
         }
       });
     }
