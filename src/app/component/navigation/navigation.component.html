@@ -25,7 +25,14 @@
       <span class="h-spacer" [routerLink]="['']" >My App</span>
       <button class="h-spacer" mat-button [routerLink]="['simple-tracker']" [routerLinkActive]="['active']">Simple Tracker</button>
       <span class="example-spacer"></span>
-      <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+      <button mat-icon-button *ngIf="isLoggedIn()" [matMenuTriggerFor]="accountMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #accountMenu="matMenu" xPosition="before">
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+      <!-- <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</button> -->
       <button mat-button *ngIf="!isLoggedIn()" (click)="loginDialog()">Login</button>
       <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>

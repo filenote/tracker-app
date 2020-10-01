@@ -22,6 +22,12 @@ import { SimpleTrackerComponent } from './component/simple-tracker/simple-tracke
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCardModule} from '@angular/material/card';
+
+
+
 
 
 
@@ -47,12 +53,16 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
+    MatMenuModule,
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule,
+    MatCardModule
+    
   ],
   entryComponents: [
     AddSuggestionComponent

@@ -6,6 +6,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+*:focus {
+    outline: none !important;
+}
+
 @media screen and (max-width: 768px) {
 
     .mat-dialog-container {

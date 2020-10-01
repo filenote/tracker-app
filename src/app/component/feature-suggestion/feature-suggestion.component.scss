@@ -1,36 +1,20 @@
-.feature-container {
-    border-style: groove;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-}
-
-.title-bar {
+.button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
-button {
-    outline: none;
+.button-icon {
+    font-size: 16px;
 }
 
-.icon {
-    padding-right: 20px;
-    
-    .thumb-up {
-        font-size: 16px;
-    }
+.button-field {
+    margin-right: 1em;
 }
 
-.thumb-up {
-    display: inline;
+.button-label {
+    font-size: 12px;
 }
 
-.title {
-    margin-right: 5px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
 
 
 
