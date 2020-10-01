@@ -14,6 +14,8 @@ export class FeatureSuggestionComponent implements OnInit {
   @Input () suggestion: Suggestion;
 
   stages: Stage[];
+  expandedStatus: boolean;
+  panelOpenState: boolean;
 
   constructor(
     private suggestionService: SuggestionService
