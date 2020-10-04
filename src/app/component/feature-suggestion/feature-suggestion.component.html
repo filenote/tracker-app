@@ -1,8 +1,10 @@
 <mat-card class="feature-card">
-    <mat-card-header>
+    <a>
+    <mat-card-header [routerLink]="[suggestion.id]">
         <mat-card-title>{{suggestion.title}}</mat-card-title>
         <mat-card-subtitle>{{parse(suggestion.createdDate) | timeago:false}}</mat-card-subtitle>
     </mat-card-header>
+    </a>
     <mat-card-content>
         <p class="testing" (click)="expandedStatus=expandedStatus?false:true" >
             {{suggestion.description | truncate : 100}}

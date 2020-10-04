@@ -22,6 +22,11 @@ export class SuggestionService {
     return this.http.get(url, options);
   }
 
+  getSuggestion(id: string): Observable<object> {
+    const url = `${environment.dataserviceUrl}/api/suggestion/${id}`;
+    return this.http.get(url);
+  }
+
   insertSuggestion({title, description, email}): Observable<object>  {
     const url = `${environment.dataserviceUrl}/api/suggestion`;
     return this.http.post(url, { title, description, email });

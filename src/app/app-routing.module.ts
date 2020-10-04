@@ -1,3 +1,4 @@
+import { FeaturePageComponent } from './component/feature-page/feature-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'simple-tracker',
     component: SimpleTrackerComponent
+  },
+  {
+    path: 'simple-tracker/:id',
+    component: FeaturePageComponent
   }
 ];
 

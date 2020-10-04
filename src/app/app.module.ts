@@ -28,6 +28,7 @@ import {MatCardModule} from '@angular/material/card';
 import { TimeagoModule } from 'ngx-timeago';
 import { TruncateModule } from '@yellowspot/ng-truncate';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { FeaturePageComponent } from './component/feature-page/feature-page.component';
 
 
 
@@ -42,7 +43,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AddSuggestionComponent,
     SimpleTrackerComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FeaturePageComponent
   ],
   imports: [
     BrowserModule,

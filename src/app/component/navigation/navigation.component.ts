@@ -27,12 +27,10 @@ export class NavigationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(response => {
       if (response && response.registering) {
-        console.log('registration dialog should now be opened.');
-        registrationRef = this.dialog.open(RegisterComponent, constants.dialogOptions)
+        registrationRef = this.dialog.open(RegisterComponent, constants.dialogOptions);
 
-        registrationRef.afterClosed().subscribe(response => {
-          console.log('done registering');
-        })
+        registrationRef.afterClosed().subscribe(registerResponse => {
+        });
       }
     });
   }
