@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
             this.dialogRef.close({});
             this.authService.login(username, password)
               .subscribe((response: Response) => {
-                console.log('other')
                 const token = response.headers.get('Authorization');
                 if (response.status == 200 && !!token) {
                   localStorage.setItem('token', token);

@@ -30,6 +30,7 @@ import { TruncateModule } from '@yellowspot/ng-truncate';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FeaturePageComponent } from './component/feature-page/feature-page.component';
 import { FeatureCommentComponent } from './component/feature-page/feature-comment/feature-comment.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -66,7 +67,8 @@ import { FeatureCommentComponent } from './component/feature-page/feature-commen
     MatCardModule,
     TimeagoModule.forRoot(),
     TruncateModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     AddSuggestionComponent

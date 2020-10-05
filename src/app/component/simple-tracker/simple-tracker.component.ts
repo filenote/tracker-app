@@ -4,8 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { SuggestionService } from 'src/app/service/suggestion.service';
 import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.component';
 import { constants } from '../../common/constants';
-import { pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-simple-tracker',
@@ -15,6 +13,7 @@ import { map } from 'rxjs/operators';
 export class SimpleTrackerComponent implements OnInit {
 
   suggestions: Suggestion[];
+  isLoading: boolean;
 
   constructor(
     private suggestionService: SuggestionService,
@@ -22,9 +21,11 @@ export class SimpleTrackerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.suggestionService.getAllSuggestions()
       .subscribe((response: Suggestion[]) => {
         this.suggestions = response;
+        this.isLoading = false;
       });
   }
 

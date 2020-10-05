@@ -4,4 +4,11 @@
         <mat-icon>add_circle_outline</mat-icon>
     </button>
 </div>
+
+<mat-card class="card" *ngIf="isLoading">
+    <div style="display:flex; justify-content: center;">
+        <mat-spinner></mat-spinner>
+    </div>
+</mat-card>
+
 <app-feature-suggestion class="suggestion-container" *ngFor="let suggestion of suggestions" [suggestion]="suggestion"></app-feature-suggestion>

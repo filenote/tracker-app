@@ -1,10 +1,14 @@
+<mat-card class="card" *ngIf="isLoading">
+    <div style="display:flex; justify-content: center;">
+        <mat-spinner></mat-spinner>
+    </div>
+</mat-card>
+
 <mat-card class="feature-card card" *ngIf="!!suggestion">
-    <a>
     <mat-card-header>
         <mat-card-title>{{suggestion.title}}</mat-card-title>
         <mat-card-subtitle>{{parse(suggestion.createdDate) | timeago:false}}</mat-card-subtitle>
     </mat-card-header>
-    </a>
     <mat-card-content>
         {{suggestion.description}}
     </mat-card-content>

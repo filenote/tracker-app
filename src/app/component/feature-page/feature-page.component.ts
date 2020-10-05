@@ -29,6 +29,7 @@ export class FeaturePageComponent implements OnInit {
   id: string;
   suggestion: Suggestion;
   comments: FeatureComment[] = [];
+  isLoading: boolean;
 
   addCommentForm = this.fb.group({
     comment: ['', [Validators.required]]
@@ -51,6 +52,7 @@ export class FeaturePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 
@@ -60,6 +62,7 @@ export class FeaturePageComponent implements OnInit {
 
       this.suggestionService.getSuggestion(this.id).subscribe((response: Suggestion) => {
         this.suggestion = response;
+        this.isLoading = false;
       });
 
       this.suggestionService.getComments(this.id).subscribe((response: FeatureComment[]) => {
