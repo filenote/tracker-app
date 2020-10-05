@@ -1,1 +1,53 @@
-<p>feature-page works!</p>
+<mat-card class="feature-card card" *ngIf="!!suggestion">
+    <a>
+    <mat-card-header>
+        <mat-card-title>{{suggestion.title}}</mat-card-title>
+        <mat-card-subtitle>{{parse(suggestion.createdDate) | timeago:false}}</mat-card-subtitle>
+    </mat-card-header>
+    </a>
+    <mat-card-content>
+        {{suggestion.description}}
+    </mat-card-content>
+    <mat-card-actions class="actions-container">
+        <span class="content-desktop stages-container actions-item">
+            <app-stage-bar [stagesInfo]="suggestion.stages"></app-stage-bar>
+        </span>
+        <span class="content-mobile stages-container actions-item">
+            <app-stage-bar [stagesInfo]="latestStage(suggestion.stages)"></app-stage-bar>
+        </span>
+        <button mat-icon-button (click)="addVote(suggestion.id)" class="button-field actions-item">
+            <mat-icon class="button-icon">thumb_up</mat-icon><span class="button-label"> {{suggestion.vote.amount}}</span></button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card class="add-comment-card card" *ngIf="isLoggedIn()">
+    <mat-card-content>
+        <form class="add-comment-form" [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">   
+            <mat-form-field class="full-width-form" appearance="standard">
+                <mat-label>Comment</mat-label>
+                <textarea matInput required formControlName="comment"></textarea>
+            </mat-form-field>
+            <div style="display:flex; justify-content:flex-end;">
+                <button mat-button type="submit" color="primary">Submit</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="add-comment-card card" *ngIf="!isLoggedIn()">
+    <mat-card-content>
+        <div style="display:flex; justify-content:center;">
+            <button mat-button color="primary" (click)="login()">Login</button>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="card" *ngFor="let comment of comments">
+    <mat-card-header>
+        <mat-card-title>{{comment.username}}</mat-card-title>
+        <mat-card-subtitle>{{parse(comment.createdDate) | timeago: false}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{comment.comment}}</p>
+    </mat-card-content>
+</mat-card>

@@ -29,6 +29,7 @@ import { TimeagoModule } from 'ngx-timeago';
 import { TruncateModule } from '@yellowspot/ng-truncate';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FeaturePageComponent } from './component/feature-page/feature-page.component';
+import { FeatureCommentComponent } from './component/feature-page/feature-comment/feature-comment.component';
 
 
 
@@ -44,7 +45,8 @@ import { FeaturePageComponent } from './component/feature-page/feature-page.comp
     SimpleTrackerComponent,
     LoginComponent,
     RegisterComponent,
-    FeaturePageComponent
+    FeaturePageComponent,
+    FeatureCommentComponent
   ],
   imports: [
     BrowserModule,

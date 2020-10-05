@@ -7,6 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SuggestionService {
+  getComments(id: string): Observable<object> {
+    const url = `${environment.dataserviceUrl}/api/comment/suggestion/${id}`;
+    return this.http.get(url);
+  }
+
+  addComment(id: string, comment: string): Observable<object> {
+    const url = `${environment.dataserviceUrl}/api/comment/suggestion/${id}`;
+    return this.http.post(url, {comment}, {observe: 'response'});
+  }
 
   constructor(
     private http: HttpClient

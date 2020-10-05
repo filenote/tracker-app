@@ -1,0 +1,50 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-icon {
+    font-size: 16px;
+}
+
+.button-field {
+    margin-right: .5em;
+    margin-left: .5em;
+}
+
+.button-label {
+    font-size: 12px;
+}
+
+.actions-container {
+    display: flex;
+}
+
+.stages-container {
+    flex-grow: 1;
+}
+
+.testing {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 0px;
+}
+
+.full-width-form {
+    display:block;
+}
+
+.card {
+    margin-top: 10px;
+}
+
+
+.content-desktop {display: inline;}
+.content-mobile {display: none;}
+
+@media screen and (max-width: 768px) {
+
+    .content-desktop {display: none;}
+    .content-mobile {display: inline;}
+
+}
