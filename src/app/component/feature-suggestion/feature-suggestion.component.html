@@ -13,7 +13,7 @@
             [(expanded)]="expandedStatus"
             (opened)="panelOpenState = true" 
             (closed)="panelOpenState = false">
-                <p (click)="expandedStatus=!expandedStatus">{{suggestion.description | words : (20 - getWordCount(suggestion.description))}}</p>
+                <p (click)="expandedStatus=!expandedStatus">{{suggestion.description | truncate : (100 - suggestion.description.length)}}</p>
         </mat-expansion-panel>
     </mat-card-content>
     <mat-card-actions class="actions-container">
