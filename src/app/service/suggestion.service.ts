@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { Stage } from '../datamodel/stage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuggestionService {
+  updateCurrentStage(id: string, stage: Stage): Observable<object> {
+    const url = `${environment.dataserviceUrl}/api/suggestion/stage`;
+    return this.http.post(url, {id, stage}, { observe: 'body' });
+  }
   getComments(id: string): Observable<object> {
     const url = `${environment.dataserviceUrl}/api/comment/suggestion/${id}`;
     return this.http.get(url);

@@ -3,7 +3,17 @@
         <mat-spinner></mat-spinner>
     </div>
 </mat-card>
-
+<div class="action-buttons" *ngIf="!!suggestion && this.authService.hasAuthority('ADMINISTRATOR')">
+    <div class= "status-buttons">
+        <button mat-stroked-button color="primary" class="left-button" (click)="updateCurrentStage(nextStage(suggestion.stages))">{{ nextStage(suggestion.stages).name }}</button>
+        <button mat-stroked-button color="primary" class="right-button" [matMenuTriggerFor]="stageMenu">
+            <mat-icon class="expand-button">expand_more</mat-icon>
+        </button>
+        <mat-menu #stageMenu="matMenu" xPosition="before">
+            <button mat-menu-item *ngFor="let stage of availableStages(suggestion.stages)" (click)="updateCurrentStage(stage)">{{stage.name}}</button>
+        </mat-menu>
+    </div> 
+</div>
 <mat-card class="feature-card card" *ngIf="!!suggestion">
     <mat-card-header>
         <mat-card-title>{{suggestion.title}}</mat-card-title>

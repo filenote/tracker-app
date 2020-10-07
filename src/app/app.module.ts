@@ -31,6 +31,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { FeaturePageComponent } from './component/feature-page/feature-page.component';
 import { FeatureCommentComponent } from './component/feature-page/feature-comment/feature-comment.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -68,7 +69,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     TimeagoModule.forRoot(),
     TruncateModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonToggleModule
   ],
   entryComponents: [
     AddSuggestionComponent

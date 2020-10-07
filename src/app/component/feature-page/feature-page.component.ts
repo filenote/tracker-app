@@ -1,7 +1,7 @@
 import { Suggestion } from 'src/app/datamodel/suggestion';
 import { SuggestionService } from 'src/app/service/suggestion.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { FeatureComment } from 'src/app/datamodel/feature-comment';
 import { Stage } from 'src/app/datamodel/stage';
 import * as R from 'ramda';
@@ -10,6 +10,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
 import { constants } from 'src/app/common/constants';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-feature-page',
@@ -23,7 +24,8 @@ export class FeaturePageComponent implements OnInit {
     private router: Router,
     private suggestionService: SuggestionService,
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public authService: AuthService
   ) { }
 
   id: string;
@@ -61,6 +63,7 @@ export class FeaturePageComponent implements OnInit {
       }
 
       this.suggestionService.getSuggestion(this.id).subscribe((response: Suggestion) => {
+        console.log(response);
         this.suggestion = response;
         this.isLoading = false;
       });
@@ -82,6 +85,26 @@ export class FeaturePageComponent implements OnInit {
 
   removeVote(id): void {
     console.log('removing vote ' + id);
+  }
+
+  updateCurrentStage(stage: Stage): void {
+    this.suggestionService.updateCurrentStage(this.suggestion.id, stage).subscribe((response: Suggestion) => {
+      this.suggestion = response;
+      console.log(response);
+    });
+  }
+
+  availableStages(stages: Stage[]): Stage[] {
+    return R.remove(this.currentStageIndex(stages), 1, stages);
+  }
+
+  currentStageIndex(stages: Stage[]): number {
+    return stages.length - R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true) - 1;
+  }
+
+  nextStage(stages: Stage[]): Stage {
+    const index = stages.length - R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true);
+    return stages[index];
   }
 
   latestStage(stages: Stage[]): Stage[] {
