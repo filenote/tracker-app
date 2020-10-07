@@ -88,9 +88,11 @@ export class FeaturePageComponent implements OnInit {
   }
 
   updateCurrentStage(stage: Stage): void {
+    // check if it's the last stage, do nothing if it is
+    if (stage.stage === this.suggestion.currentStage) return;
+
     this.suggestionService.updateCurrentStage(this.suggestion.id, stage).subscribe((response: Suggestion) => {
       this.suggestion = response;
-      console.log(response);
     });
   }
 
@@ -104,6 +106,7 @@ export class FeaturePageComponent implements OnInit {
 
   nextStage(stages: Stage[]): Stage {
     const index = stages.length - R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true);
+    if (index == stages.length) return stages[index - 1]
     return stages[index];
   }
 

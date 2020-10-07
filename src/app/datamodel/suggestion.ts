@@ -9,4 +9,5 @@ export class Suggestion {
     stages: Stage[];
     createdDate: string;
     lastUpdatedDate: string;
+    currentStage: number;
 }
