@@ -1,3 +1,4 @@
+import { FeatureComment } from 'src/app/datamodel/feature-comment';
 import { Stage } from './stage';
 import { Vote } from './vote';
 
@@ -10,4 +11,5 @@ export class Suggestion {
     createdDate: string;
     lastUpdatedDate: string;
     currentStage: number;
+    comments: FeatureComment[];
 }

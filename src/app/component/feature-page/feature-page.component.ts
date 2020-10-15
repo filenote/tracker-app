@@ -47,9 +47,9 @@ export class FeaturePageComponent implements OnInit {
       this.suggestionService.addComment(this.id, comment).subscribe((response: Response) => {
         console.log(response);
         if (response.status === 200) {
-          this.comments = R.insert(0, response.body, this.comments)
+          this.comments = R.insert(0, response.body, this.comments);
         }
-      })
+      });
     }
   }
 
@@ -63,15 +63,17 @@ export class FeaturePageComponent implements OnInit {
       }
 
       this.suggestionService.getSuggestion(this.id).subscribe((response: Suggestion) => {
+        console.log(response);
         this.suggestion = response;
+        this.comments = response.comments;
         this.isLoading = false;
       });
 
-      this.suggestionService.getComments(this.id).subscribe((response: FeatureComment[]) => {
-        if (!!response) {
-          this.comments = response;
-        }
-      });
+      // this.suggestionService.getComments(this.id).subscribe((response: FeatureComment[]) => {
+      //   if (!!response) {
+      //     this.comments = response;
+      //   }
+      // });
     });
   }
 

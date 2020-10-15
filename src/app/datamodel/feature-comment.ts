@@ -1,8 +1,7 @@
 export class FeatureComment {
     id: string;
-    suggestionId: string;
     username: string;
-    comment: string;
+    text: string;
     createdDate: string;
     updatedDate: string;
 }

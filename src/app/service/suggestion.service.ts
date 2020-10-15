@@ -18,8 +18,9 @@ export class SuggestionService {
   }
 
   addComment(id: string, comment: string): Observable<object> {
-    const url = `${environment.dataserviceUrl}/api/comment/suggestion/${id}`;
-    return this.http.post(url, {comment}, {observe: 'response'});
+    // const url = `${environment.dataserviceUrl}/api/comment/suggestion/${id}`;
+    const url = `${environment.dataserviceUrl}/api/suggestion/${id}/comment`;
+    return this.http.post(url, { text: comment }, { observe: 'response' });
   }
 
   constructor(
