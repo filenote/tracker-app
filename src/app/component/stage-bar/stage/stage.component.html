@@ -1,4 +1,4 @@
-<span class="stage-container" *ngIf="isEnabled(); else notEnabled">
+<span class="stage-container" *ngIf="stageDetails.enabled; else notEnabled">
     <div class="name enabled-name">{{stageDetails.name}}</div>
     <div class="center enabled-bar"></div>
 </span>

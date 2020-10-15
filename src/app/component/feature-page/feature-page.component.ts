@@ -37,7 +37,7 @@ export class FeaturePageComponent implements OnInit {
     comment: ['', [Validators.required]]
   });
 
-  onSubmit() {
+  onSubmit(): void {
 
     console.log(this.addCommentForm);
 
@@ -63,14 +63,12 @@ export class FeaturePageComponent implements OnInit {
       }
 
       this.suggestionService.getSuggestion(this.id).subscribe((response: Suggestion) => {
-        console.log(response);
         this.suggestion = response;
         this.isLoading = false;
       });
 
       this.suggestionService.getComments(this.id).subscribe((response: FeatureComment[]) => {
         if (!!response) {
-          console.log(response);
           this.comments = response;
         }
       });
@@ -89,6 +87,7 @@ export class FeaturePageComponent implements OnInit {
   }
 
   updateCurrentStage(stage: Stage): void {
+    console.log(stage);
     // check if it's the last stage, do nothing if it is
     if (stage.stage === this.suggestion.currentStage) return;
 
@@ -106,7 +105,9 @@ export class FeaturePageComponent implements OnInit {
   }
 
   nextStage(stages: Stage[]): Stage {
-    return stages[this.suggestion.currentStage + 1];
+    const index = this.suggestion.currentStage;
+    if (index == stages.length - 1) return stages[index]
+    return stages[index + 1];
   }
 
   latestStage(stages: Stage[]): Stage[] {
