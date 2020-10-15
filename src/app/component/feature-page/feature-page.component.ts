@@ -70,6 +70,7 @@ export class FeaturePageComponent implements OnInit {
 
       this.suggestionService.getComments(this.id).subscribe((response: FeatureComment[]) => {
         if (!!response) {
+          console.log(response);
           this.comments = response;
         }
       });
@@ -101,18 +102,15 @@ export class FeaturePageComponent implements OnInit {
   }
 
   currentStageIndex(stages: Stage[]): number {
-    return stages.length - R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true) - 1;
+    return this.suggestion.currentStage;
   }
 
   nextStage(stages: Stage[]): Stage {
-    const index = stages.length - R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true);
-    if (index == stages.length) return stages[index - 1]
-    return stages[index];
+    return stages[this.suggestion.currentStage + 1];
   }
 
   latestStage(stages: Stage[]): Stage[] {
-    const reversedIndex = R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true);
-    const latestIndex = stages.length - reversedIndex - 1;
+    const latestIndex = this.suggestion.currentStage;
     let start = latestIndex - 1;
     if (start <= 0) {
       start = 0;

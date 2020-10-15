@@ -16,7 +16,7 @@ export class StageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  isEnabled() {
+  isEnabled(): boolean {
     return this.stageDetails.enabled;
   }
 

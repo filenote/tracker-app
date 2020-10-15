@@ -22,7 +22,6 @@ export class FeatureSuggestionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(typeof this.suggestion.createdDate);
     this.stages = this.suggestion.stages;
   }
 
@@ -38,8 +37,7 @@ export class FeatureSuggestionComponent implements OnInit {
   }
 
   latestStage(stages: Stage[]): Stage[] {
-    const reversedIndex = R.reverse(stages).findIndex((stage: Stage) => stage.enabled === true);
-    const latestIndex = stages.length - reversedIndex - 1;
+    const latestIndex = this.suggestion.currentStage;
     let start = latestIndex - 1;
     if (start <= 0) {
       start = 0;
