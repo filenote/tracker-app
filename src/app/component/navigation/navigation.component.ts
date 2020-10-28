@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { constants } from 'src/app/common/constants';
-import { AuthService } from 'src/app/service/auth.service';
-import { LoginComponent } from '../login/login.component';
-import { RegisterComponent } from '../register/register.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -13,26 +9,16 @@ import { RegisterComponent } from '../register/register.component';
 export class NavigationComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog,
-    private authService: AuthService
-  ) { }
+    private router: Router
+  ) { 
+
+  }
 
   ngOnInit(): void {
   }
 
   loginDialog(): void {
-    let registrationRef: MatDialogRef<RegisterComponent>;
-
-    const dialogRef = this.dialog.open(LoginComponent, constants.dialogOptions);
-
-    dialogRef.afterClosed().subscribe(response => {
-      if (response && response.registering) {
-        registrationRef = this.dialog.open(RegisterComponent, constants.dialogOptions);
-
-        registrationRef.afterClosed().subscribe(registerResponse => {
-        });
-      }
-    });
+    this.router.navigate([this.router.url, 'login']);
   }
 
   logout(): void {
@@ -40,8 +26,7 @@ export class NavigationComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('token');
-    return token != null;
+    return !!localStorage.getItem('token');
   }
 
 }

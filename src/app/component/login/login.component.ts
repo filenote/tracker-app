@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   openRegistration(): void {
-    console.log('opening registration');
-    this.dialogRef.close({registering: true});
+    this.dialogRef.close({register: true});
   }
 
 }

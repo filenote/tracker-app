@@ -1,15 +1,11 @@
 import { Suggestion } from 'src/app/datamodel/suggestion';
 import { SuggestionService } from 'src/app/service/suggestion.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FeatureComment } from 'src/app/datamodel/feature-comment';
 import { Stage } from 'src/app/datamodel/stage';
 import * as R from 'ramda';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RegisterComponent } from '../register/register.component';
-import { LoginComponent } from '../login/login.component';
-import { constants } from 'src/app/common/constants';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -24,7 +20,6 @@ export class FeaturePageComponent implements OnInit {
     private router: Router,
     private suggestionService: SuggestionService,
     private fb: FormBuilder,
-    private dialog: MatDialog,
     public authService: AuthService
   ) { }
 
@@ -68,12 +63,6 @@ export class FeaturePageComponent implements OnInit {
         this.comments = response.comments;
         this.isLoading = false;
       });
-
-      // this.suggestionService.getComments(this.id).subscribe((response: FeatureComment[]) => {
-      //   if (!!response) {
-      //     this.comments = response;
-      //   }
-      // });
     });
   }
 
@@ -89,7 +78,6 @@ export class FeaturePageComponent implements OnInit {
   }
 
   updateCurrentStage(stage: Stage): void {
-    console.log(stage);
     // check if it's the last stage, do nothing if it is
     if (stage.stage === this.suggestion.currentStage) return;
 
@@ -132,18 +120,7 @@ export class FeaturePageComponent implements OnInit {
   }
 
   login(): void {
-    let registrationRef: MatDialogRef<RegisterComponent>;
-
-    const dialogRef = this.dialog.open(LoginComponent, constants.dialogOptions);
-
-    dialogRef.afterClosed().subscribe(response => {
-      if (response && response.registering) {
-        registrationRef = this.dialog.open(RegisterComponent, constants.dialogOptions);
-
-        registrationRef.afterClosed().subscribe(registerResponse => {
-        });
-      }
-    });
+    this.router.navigate([this.router.url, 'login']);
   }
 
   parse(date: string): number {

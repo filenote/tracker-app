@@ -32,6 +32,8 @@ import { FeaturePageComponent } from './component/feature-page/feature-page.comp
 import { FeatureCommentComponent } from './component/feature-page/feature-comment/feature-comment.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { LoginTriggerComponent } from './component/login/login-trigger/login-trigger.component';
+import { RegisterTriggerComponent } from './component/register/register-trigger/register-trigger.component';
 
 
 
@@ -48,7 +50,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     LoginComponent,
     RegisterComponent,
     FeaturePageComponent,
-    FeatureCommentComponent
+    FeatureCommentComponent,
+    LoginTriggerComponent,
+    RegisterTriggerComponent
   ],
   imports: [
     BrowserModule,

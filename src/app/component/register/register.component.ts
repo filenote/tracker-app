@@ -37,12 +37,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.authService.register(username, password)
         .subscribe((response: Response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             this.dialogRef.close({});
             this.authService.login(username, password)
               .subscribe((response: Response) => {
                 const token = response.headers.get('Authorization');
-                if (response.status == 200 && !!token) {
+                if (response.status === 200 && !!token) {
                   localStorage.setItem('token', token);
                 }
               })
@@ -51,6 +51,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  openLogin(): void {
+    this.dialogRef.close({login: true});
+  }
 
 
 }
