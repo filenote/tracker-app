@@ -34,6 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { LoginTriggerComponent } from './component/login/login-trigger/login-trigger.component';
 import { RegisterTriggerComponent } from './component/register/register-trigger/register-trigger.component';
+import { EditCommentDialogComponent } from './component/edit-comment-dialog/edit-comment-dialog.component';
 
 
 
@@ -52,7 +53,8 @@ import { RegisterTriggerComponent } from './component/register/register-trigger/
     FeaturePageComponent,
     FeatureCommentComponent,
     LoginTriggerComponent,
-    RegisterTriggerComponent
+    RegisterTriggerComponent,
+    EditCommentDialogComponent
   ],
   imports: [
     BrowserModule,

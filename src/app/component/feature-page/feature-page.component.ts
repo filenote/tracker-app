@@ -1,3 +1,5 @@
+import { EditCommentDialogComponent } from './../edit-comment-dialog/edit-comment-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Suggestion } from 'src/app/datamodel/suggestion';
 import { SuggestionService } from 'src/app/service/suggestion.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +9,8 @@ import { Stage } from 'src/app/datamodel/stage';
 import * as R from 'ramda';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/service/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { constants } from 'src/app/common/constants';
 
 @Component({
   selector: 'app-feature-page',
@@ -20,28 +24,30 @@ export class FeaturePageComponent implements OnInit {
     private router: Router,
     private suggestionService: SuggestionService,
     private fb: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private dialog: MatDialog
   ) { }
 
   id: string;
   suggestion: Suggestion;
-  comments: FeatureComment[] = [];
+  comments: FeatureComment[];
   isLoading: boolean;
+  jwt: JwtHelperService = new JwtHelperService();
+
 
   addCommentForm = this.fb.group({
     comment: ['', [Validators.required]]
   });
 
   onSubmit(): void {
-
-    console.log(this.addCommentForm);
-
     if (this.addCommentForm.valid) {
       const comment: string = this.addCommentForm.get('comment').value;
 
       this.suggestionService.addComment(this.id, comment).subscribe((response: Response) => {
-        console.log(response);
         if (response.status === 200) {
+          if (this.comments === null) {
+             this.comments = [];
+          }
           this.comments = R.insert(0, response.body, this.comments);
         }
       });
@@ -79,7 +85,7 @@ export class FeaturePageComponent implements OnInit {
 
   updateCurrentStage(stage: Stage): void {
     // check if it's the last stage, do nothing if it is
-    if (stage.stage === this.suggestion.currentStage) return;
+    if (stage.stage === this.suggestion.currentStage) { return; }
 
     this.suggestionService.updateCurrentStage(this.suggestion.id, stage).subscribe((response: Suggestion) => {
       this.suggestion = response;
@@ -96,7 +102,7 @@ export class FeaturePageComponent implements OnInit {
 
   nextStage(stages: Stage[]): Stage {
     const index = this.suggestion.currentStage;
-    if (index == stages.length - 1) return stages[index]
+    if (index === stages.length - 1) { return stages[index]; }
     return stages[index + 1];
   }
 
@@ -125,5 +131,31 @@ export class FeaturePageComponent implements OnInit {
 
   parse(date: string): number {
     return Date.parse(date);
+  }
+
+  canEditComment(username: string): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) { return false; }
+    const decodedToken = this.jwt.decodeToken(token);
+
+    return username === decodedToken.sub;
+  }
+
+  openEditCommentDialog(commentId: string, currentText: string): void {
+    const details = {
+      currentText,
+      commentId,
+      suggestionId: this.suggestion.id
+    };
+    const dialogRef = this.dialog.open(EditCommentDialogComponent,
+      { ...constants.dialogOptions, data: { ...details }});
+
+    dialogRef.afterClosed().subscribe(result => {
+      const newSuggestion = result?.suggestion;
+      if (!!newSuggestion) {
+        this.suggestion = newSuggestion;
+        this.comments = this.suggestion.comments;
+      }
+    });
   }
 }

@@ -51,4 +51,9 @@ export class SuggestionService {
     const url = `${environment.dataserviceUrl}/api/suggestion/${id}/upvote`;
     return this.http.post(url, {});
   }
+
+  updateComment(suggestionId: string, commentId: string, text: string): Observable<object> {
+    const url = `${environment.dataserviceUrl}/api/suggestion/${suggestionId}/comment/${commentId}`;
+    return this.http.put(url, { text });
+  }
 }

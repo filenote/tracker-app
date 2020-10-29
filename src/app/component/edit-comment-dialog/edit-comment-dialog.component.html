@@ -1,0 +1,11 @@
+<h2>Edit Comment</h2>
+<form class="edit-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width-form" appearance="standard">
+        <mat-label>Text</mat-label>
+        <textarea matInput required formControlName="text"></textarea>
+    </mat-form-field>
+
+    <div class="sub-button" style="display:flex; justify-content:flex-end;">
+        <button mat-button type="submit" color="primary">Submit</button>
+    </div>
+</form>
