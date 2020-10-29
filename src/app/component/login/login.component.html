@@ -1,4 +1,5 @@
 <h2>Login</h2>
+<div style="display:flex; justify-content: center; color: red;">{{errorMessage}}</div>
 <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="full-width-form" appearance="standard">
         <mat-label>Username</mat-label>
