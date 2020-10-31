@@ -151,10 +151,9 @@ export class FeaturePageComponent implements OnInit {
       { ...constants.dialogOptions, data: { ...details }});
 
     dialogRef.afterClosed().subscribe(result => {
-      const newSuggestion = result?.suggestion;
-      if (!!newSuggestion) {
-        this.suggestion = newSuggestion;
-        this.comments = this.suggestion.comments;
+      const newComments = result?.suggestion?.comments;
+      if (!!newComments) {
+        this.comments = newComments;
       }
     });
   }

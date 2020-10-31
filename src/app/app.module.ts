@@ -35,6 +35,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { LoginTriggerComponent } from './component/login/login-trigger/login-trigger.component';
 import { RegisterTriggerComponent } from './component/register/register-trigger/register-trigger.component';
 import { EditCommentDialogComponent } from './component/edit-comment-dialog/edit-comment-dialog.component';
+import { QuillModule } from 'ngx-quill';
 
 
 
@@ -76,7 +77,8 @@ import { EditCommentDialogComponent } from './component/edit-comment-dialog/edit
     TruncateModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    QuillModule.forRoot()
   ],
   entryComponents: [
     AddSuggestionComponent

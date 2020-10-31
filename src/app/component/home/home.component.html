@@ -1,1 +1,27 @@
 <router-outlet></router-outlet>
+
+
+<h3 id="reactiveForms">Reactive Forms and patch value</h3>
+
+<button type="button" (click)="hide=!(!!hide)">
+  hide / show
+</button>
+
+<button type="button" (click)="form.enabled ? form.disable() : form.enable()">
+    disable / enable
+</button>
+
+<pre>{{ form.get('editor').value }}</pre>
+<button type="button" (click)="patchValue()">patchValue</button>
+<button type="button" (click)="setControl()">setControl</button>
+
+<form [formGroup]="form">
+  <quill-editor
+    #editor [style.display]="hide ? 'none' : 'block'"
+    [styles]="{ backgroundColor:backgroundColor }"
+    formControlName="editor">
+  </quill-editor>
+
+  <h4>Material Quill</h4>
+
+</form>
