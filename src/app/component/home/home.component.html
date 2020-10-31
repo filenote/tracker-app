@@ -1,1 +1,9 @@
 <router-outlet></router-outlet>
+
+<form [formGroup]="form">
+    <ckeditor [editor]="editor" [config]="editorConfig" (ready)="onReady($event)" formControlName="text"></ckeditor>
+</form>
+
+<div class="ck-content">
+    {{form.get('text').value}}
+</div>
