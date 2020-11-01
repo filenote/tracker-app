@@ -8,7 +8,8 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -21,13 +22,13 @@ export class AuthInterceptor implements HttpInterceptor {
     if (response instanceof HttpErrorResponse) {
       if (response.status === 403) {
         localStorage.removeItem('token');
-        this.router.navigate(['/login']);
       }
     }
     return throwError(response);
   }
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = localStorage.getItem('token');
+
     if (!!token) {
       const tokenizedRequest = request.clone({
         setHeaders: {

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SuggestionService } from 'src/app/service/suggestion.service';
 import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.component';
 import { constants } from '../../common/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-simple-tracker',
@@ -17,7 +18,8 @@ export class SimpleTrackerComponent implements OnInit {
 
   constructor(
     private suggestionService: SuggestionService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,13 +32,16 @@ export class SimpleTrackerComponent implements OnInit {
   }
 
   addSuggestion(): void {
-    const dialogRef = this.dialog.open(AddSuggestionComponent, constants.dialogOptions);
+    this.router.navigate(['simple-tracker', 'new'], { queryParams: { 
+      from: 'simple-tracker'
+    }});
+    // const dialogRef = this.dialog.open(AddSuggestionComponent, constants.dialogOptions);
 
-    dialogRef.afterClosed().subscribe(response => {
-      if (response != null) {
-      this.suggestions.push(response);
-      }
-    });
+    // dialogRef.afterClosed().subscribe(response => {
+    //   if (response != null) {
+    //   this.suggestions.push(response);
+    //   }
+    // });
   }
 
 

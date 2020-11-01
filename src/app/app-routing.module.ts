@@ -5,7 +5,8 @@ import { HomeComponent } from './component/home/home.component';
 import { SimpleTrackerComponent } from './component/simple-tracker/simple-tracker.component';
 import { LoginTriggerComponent } from './component/login/login-trigger/login-trigger.component';
 import { RegisterTriggerComponent } from './component/register/register-trigger/register-trigger.component';
-
+import { AddSuggestionComponent } from './component/add-suggestion/add-suggestion.component';
+import { AuthenticationGuard } from './guard/authentication.guard';
 const authRoutes = [
   {
     path: 'login',
@@ -31,6 +32,11 @@ const routes: Routes = [
     children: [
       ...authRoutes
     ]
+  },
+  {
+    path: 'simple-tracker/new',
+    component: AddSuggestionComponent,
+    canActivate: [ AuthenticationGuard ]
   },
   {
     path: 'simple-tracker/:id',
