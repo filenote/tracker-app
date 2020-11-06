@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Suggestion } from 'src/app/datamodel/suggestion';
 import { MatDialog } from '@angular/material/dialog';
 import { SuggestionService } from 'src/app/service/suggestion.service';
-import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.component';
-import { constants } from '../../common/constants';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,10 +13,10 @@ export class SimpleTrackerComponent implements OnInit {
 
   suggestions: Suggestion[];
   isLoading: boolean;
+  active: boolean[];
 
   constructor(
     private suggestionService: SuggestionService,
-    private dialog: MatDialog,
     private router: Router
   ) { }
 
@@ -28,21 +26,18 @@ export class SimpleTrackerComponent implements OnInit {
       .subscribe((response: Suggestion[]) => {
         this.suggestions = response;
         this.isLoading = false;
+        this.active = new Array(this.suggestions.length).fill(false);
       });
   }
 
   addSuggestion(): void {
-    this.router.navigate(['simple-tracker', 'new'], { queryParams: { 
+    this.router.navigate(['simple-tracker', 'new'], { queryParams: {
       from: 'simple-tracker'
     }});
-    // const dialogRef = this.dialog.open(AddSuggestionComponent, constants.dialogOptions);
-
-    // dialogRef.afterClosed().subscribe(response => {
-    //   if (response != null) {
-    //   this.suggestions.push(response);
-    //   }
-    // });
   }
 
-
+  toggleActive(index: number): void {
+    this.active[index] = !this.active[index];
+    console.log(this.active);
+  }
 }

@@ -1,40 +1,21 @@
-<!--   
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-
-    <a class="navbar-brand" [routerLink]="['']">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="h-spacer" [routerLink]="['']">My App</span>
+    <button class="h-spacer" mat-button [routerLink]="['simple-tracker']" [routerLinkActive]="['active']">Simple
+      Tracker</button>
+    <span class="example-spacer"></span>
+    <button mat-icon-button *ngIf="isLoggedIn()" [matMenuTriggerFor]="accountMenu">
+      <mat-icon>account_circle</mat-icon>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarLinks">
-      <div class="navbar-nav mr-auto">
-           <a class="nav-item nav-link" [routerLink]="['hiscores']" [routerLinkeActive]="['active']">Hiscores</a> -->
-        <!-- <a class="nav-item nav-link" [routerLink]="['hiscores']" [routerLinkActive]="['active']">Hiscores</a>
-        <a class="nav-item nav-link" [routerLink]="['admin']" [routerLinkActive]="['active']">Admin</a> 
-      </div>
-      <div class="navbar-nav ml-auto">
-         <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#nav-login-modal">Login</button>
-      </div>
-    </div>
-</nav>
-  
-  <app-login-modal [modalId]="['nav-login-modal']"></app-login-modal> -->
-
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span class="h-spacer" [routerLink]="['']" >My App</span>
-      <button class="h-spacer" mat-button [routerLink]="['simple-tracker']" [routerLinkActive]="['active']">Simple Tracker</button>
-      <span class="example-spacer"></span>
-      <button mat-icon-button *ngIf="isLoggedIn()" [matMenuTriggerFor]="accountMenu">
-        <mat-icon>account_circle</mat-icon>
-      </button>
-      <mat-menu #accountMenu="matMenu" xPosition="before">
-        <mat-divider></mat-divider>
-        <button mat-menu-item (click)="logout()">Logout</button>
-      </mat-menu>
-      <!-- <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</button> -->
-      <button mat-button *ngIf="!isLoggedIn()" (click)="loginDialog()">Login</button>
-      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-menu #accountMenu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="goToAccountInformation()">Account</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <!-- <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</button> -->
+    <button mat-button *ngIf="!isLoggedIn()" (click)="loginDialog()">Login</button>
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button> -->
-    </mat-toolbar-row>
+  </mat-toolbar-row>
+</mat-toolbar>

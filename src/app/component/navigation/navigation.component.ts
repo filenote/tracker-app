@@ -10,9 +10,7 @@ export class NavigationComponent implements OnInit {
 
   constructor(
     private router: Router
-  ) { 
-
-  }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -21,7 +19,12 @@ export class NavigationComponent implements OnInit {
     this.router.navigate([this.router.url, 'login']);
   }
 
+  goToAccountInformation(): void {
+    this.router.navigate(['/account']);
+  }
+
   logout(): void {
+    this.router.navigate(['']);
     localStorage.removeItem('token');
   }
 

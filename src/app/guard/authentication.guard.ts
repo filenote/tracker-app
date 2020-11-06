@@ -10,8 +10,7 @@ export class AuthenticationGuard implements CanActivate {
 
   constructor(
     private auth: AuthService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) { }
 
   canActivate(
@@ -19,23 +18,20 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const isLoggedIn: boolean = !!localStorage.getItem('token');
       const returnUrl: string = this.router.routerState.snapshot.url || '';
+      if (!isLoggedIn) {
+        this.router.navigate([returnUrl, 'login']);
+        return false;
+      }
       return this.auth.serverAuthentication()
       .then((isAuthenticated: boolean) => {
-        if (!isAuthenticated && !isLoggedIn) {
-          this.router.navigate([returnUrl, 'login']);
-        } else if (!isAuthenticated) {
+        if (!isAuthenticated) {
           this.router.navigate([returnUrl, 'login']);
         }
         return isAuthenticated;
       })
       .catch(() => {
-        if (!isLoggedIn) {
-          this.router.navigate([returnUrl, 'login']);
-        } else {
-          this.router.navigate([returnUrl, 'login']);
-        }
+        this.router.navigate([returnUrl, 'login']);
         return false;
       });
   }
-  
 }

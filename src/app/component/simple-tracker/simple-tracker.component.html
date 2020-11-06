@@ -1,6 +1,6 @@
 <div class="title-bar">
-    <h1 class="mat-title title-header">Simple Tracker</h1>
-    <button class="add-button" mat-icon-button color="green" (click)="addSuggestion()">
+    <h1>Simple Tracker</h1>
+    <button mat-icon-button color="green" (click)="addSuggestion()">
         <mat-icon>add_circle_outline</mat-icon>
     </button>
 </div>
@@ -11,5 +11,12 @@
     </div>
 </mat-card>
 
-<app-feature-suggestion class="suggestion-container" *ngFor="let suggestion of suggestions" [suggestion]="suggestion"></app-feature-suggestion>
+<div class="suggestions">
+  <app-feature-suggestion
+    class="suggestion"
+    *ngFor="let suggestion of suggestions; let i = index;"
+    [suggestion]="suggestion"
+    [class.active]="active[i]"
+    (click)="toggleActive(i)"></app-feature-suggestion>
+</div>
 <router-outlet></router-outlet>

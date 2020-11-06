@@ -8,9 +8,10 @@ import { Stage } from '../../datamodel/stage';
 })
 export class StageBarComponent implements OnInit {
 
-  @Input () stagesInfo: [Stage]
+  @Input() stages: [Stage];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

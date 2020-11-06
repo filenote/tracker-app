@@ -1,3 +1,3 @@
-<div class="stages center">
-    <app-stage class="stage" [stageDetails]="stage" *ngFor="let stage of stagesInfo"></app-stage>
+<div class="stages">
+  <div class="stage" *ngFor="let stage of stages" [class.active]="stage.enabled"> {{ stage.name }} </div>
 </div>

@@ -1,3 +1,4 @@
+import { AccountInformationComponent } from './component/account-information/account-information.component';
 import { FeaturePageComponent } from './component/feature-page/feature-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,6 +8,7 @@ import { LoginTriggerComponent } from './component/login/login-trigger/login-tri
 import { RegisterTriggerComponent } from './component/register/register-trigger/register-trigger.component';
 import { AddSuggestionComponent } from './component/add-suggestion/add-suggestion.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
+
 const authRoutes = [
   {
     path: 'login',
@@ -16,7 +18,7 @@ const authRoutes = [
     path: 'register',
     component: RegisterTriggerComponent
   }
-]
+];
 
 const routes: Routes = [
   {
@@ -44,6 +46,11 @@ const routes: Routes = [
     children: [
       ...authRoutes
     ]
+  },
+  {
+    path: 'account',
+    component: AccountInformationComponent,
+    canActivate: [ AuthenticationGuard ]
   },
   {
     path: '**',
