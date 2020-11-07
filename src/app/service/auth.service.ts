@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable, ɵɵelementContainerStart } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -24,6 +24,15 @@ export class AuthService {
   register(username: string, password: string): Observable<object> {
     const url = `${environment.dataserviceUrl}/api/account/register`;
     return this.http.post(url, {username, password}, {observe: 'response'});
+  }
+
+  serverAuthentication(authorization?: string): Promise<any> {
+    const role = authorization || 'USER';
+    const url = `${environment.dataserviceUrl}/api/account/auth`;
+    return this.http.get(url, { params: { 
+      role
+    }}).toPromise();
+    return this.http.get(url).toPromise();
   }
 
   /**

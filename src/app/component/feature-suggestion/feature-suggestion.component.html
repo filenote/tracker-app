@@ -1,29 +1,13 @@
-<mat-card class="feature-card">
-    <a>
-    <mat-card-header [routerLink]="[suggestion.id]">
-        <mat-card-title>{{suggestion.title}}</mat-card-title>
-        <mat-card-subtitle>{{parse(suggestion.createdDate) | timeago:false}}</mat-card-subtitle>
-    </mat-card-header>
-    </a>
-    <mat-card-content>
-        <p class="testing" (click)="expandedStatus=!expandedStatus" >
-            {{suggestion.description | truncate : 100}}
-        </p>
-        <mat-expansion-panel class="mat-elevation-z0" 
-            [(expanded)]="expandedStatus"
-            (opened)="panelOpenState = true" 
-            (closed)="panelOpenState = false">
-                <p (click)="expandedStatus=!expandedStatus">{{suggestion.description | truncate : (100 - suggestion.description.length)}}</p>
-        </mat-expansion-panel>
-    </mat-card-content>
-    <mat-card-actions class="actions-container">
-        <span class="content-desktop stages-container actions-item">
-            <app-stage-bar [stagesInfo]="stages"></app-stage-bar>
-        </span>
-        <span class="content-mobile stages-container actions-item">
-            <app-stage-bar [stagesInfo]="latestStage(stages)"></app-stage-bar>
-        </span>
-        <button mat-icon-button (click)="addVote(suggestion.id)" class="button-field actions-item">
-            <mat-icon class="button-icon">thumb_up</mat-icon><span class="button-label"> {{suggestion.vote.amount}}</span></button>
-    </mat-card-actions>
-</mat-card>
+<div class="feature">
+  <div class="feature__card">
+    <div class="title-bar">
+      <span class="title">{{ suggestion.title }}</span>
+      <span class="votes"><span>{{ suggestion.vote.amount }}</span></span>
+    </div>
+    <span class="date">{{ suggestion.createdDate | date | timeago: false }}</span>
+    <div class="content">
+      <span class="description">{{ suggestion.description | truncate : 100 }}</span>
+    </div>
+    <app-stage-bar class="action" [stages]="latestStage()"></app-stage-bar>
+  </div>
+</div>

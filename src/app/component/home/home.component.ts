@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Suggestion } from '../../datamodel/suggestion';
-import { SuggestionService } from '../../service/suggestion.service';
-import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.component';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +7,7 @@ import { AddSuggestionComponent } from '../add-suggestion/add-suggestion.compone
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

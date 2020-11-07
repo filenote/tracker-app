@@ -1,24 +1,21 @@
 .title-bar {
-    display: flex;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  justify-items: center;
 
-    // .title-header {
-    //     justify-self: flex-start;
-    // }
+  h1 {
+    margin-bottom: auto;
+    margin-top: auto;
+    grid-column-start: 2;
+  }
 
-    h1.title-header {
-        margin-left: auto;
-        margin-bottom: 0;
-        padding: .5em;
-        display: inline-block;
-    }
-
-    .add-button {
-        outline: none;
-        margin-left: auto;
-    }
+  button {
+    margin-left: auto;
+  }
 }
 
-.suggestion-container {
-    margin: 20px;
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+  gap: 1em;
 }

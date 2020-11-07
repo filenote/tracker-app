@@ -13,32 +13,21 @@ export class FeatureSuggestionComponent implements OnInit {
 
   @Input () suggestion: Suggestion;
 
-  stages: Stage[];
-  expandedStatus: boolean;
-  panelOpenState: boolean;
-
   constructor(
     private suggestionService: SuggestionService
   ) { }
 
   ngOnInit(): void {
-    this.stages = this.suggestion.stages;
   }
 
-  addVote(id): void {
-    this.suggestionService.addVoteToSuggestion({id})
-      .subscribe((response: Suggestion) => {
-        this.suggestion.vote.amount = response.vote.amount;
-      });
-  }
+  latestStage(): Stage[] {
+    const currentIndex = this.suggestion.currentStage;
+    if (currentIndex === this.suggestion.stages.length - 1) {
+      return [ this.suggestion.stages[this.suggestion.stages.length - 1] ];
+    }
 
-  removeVote(id): void {
-    console.log('removing vote ' + id);
-  }
-
-  latestStage(stages: Stage[]): Stage[] {
-    const latestIndex = this.suggestion.currentStage;
-    let start = latestIndex - 1;
+    const stages = this.suggestion.stages;
+    let start = currentIndex - 1;
     if (start <= 0) {
       start = 0;
     }
@@ -49,13 +38,5 @@ export class FeatureSuggestionComponent implements OnInit {
     }
 
     return R.slice(start, end, stages);
-  }
-
-  parse(date: string): number {
-    return Date.parse(date);
-  }
-
-  getWordCount(str: string): number {
-    return R.split(' ', str).length;
   }
 }

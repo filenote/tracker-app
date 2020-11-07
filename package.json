@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~10.0.14",
     "@angular/router": "~10.0.14",
     "@auth0/angular-jwt": "^5.0.1",
+    "@ckeditor/ckeditor5-angular": "^2.0.1",
+    "@ckeditor/ckeditor5-build-classic": "^23.1.0",
     "@yellowspot/ng-truncate": "^1.5.2",
     "material-design-icons": "^3.0.1",
     "ngx-timeago": "^1.0.4",

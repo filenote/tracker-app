@@ -1,7 +1,9 @@
+import { CustomUploadAdapter } from 'src/app/adapter/custom-upload-adapter';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SuggestionService } from 'src/app/service/suggestion.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-add-suggestion',
@@ -10,9 +12,11 @@ import { SuggestionService } from 'src/app/service/suggestion.service';
 })
 export class AddSuggestionComponent implements OnInit {
 
+  editor = ClassicEditor;
   submitSuggestionForm = this.fb.group({
     title: ['', [Validators.required]],
     description: ['', [ Validators.required ]],
+    text: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]]
   });
 
@@ -23,6 +27,12 @@ export class AddSuggestionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  public onReady(editor: any): void {
+    editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+      return new CustomUploadAdapter( loader );
+    };
   }
 
   onSubmit(): void {
@@ -37,3 +47,5 @@ export class AddSuggestionComponent implements OnInit {
     }
   }
 }
+
+

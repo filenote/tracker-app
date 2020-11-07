@@ -12,7 +12,7 @@
         <mat-menu #stageMenu="matMenu" xPosition="before">
             <button mat-menu-item *ngFor="let stage of availableStages(suggestion.stages)" (click)="updateCurrentStage(stage)">{{stage.name}}</button>
         </mat-menu>
-    </div> 
+    </div>
 </div>
 <mat-card class="feature-card card" *ngIf="!!suggestion">
     <mat-card-header>
@@ -24,10 +24,10 @@
     </mat-card-content>
     <mat-card-actions class="actions-container">
         <span class="content-desktop stages-container actions-item">
-            <app-stage-bar [stagesInfo]="suggestion.stages"></app-stage-bar>
+            <app-stage-bar [stages]="suggestion.stages"></app-stage-bar>
         </span>
         <span class="content-mobile stages-container actions-item">
-            <app-stage-bar [stagesInfo]="latestStage(suggestion.stages)"></app-stage-bar>
+            <app-stage-bar [stages]="latestStage(suggestion.stages)"></app-stage-bar>
         </span>
         <button mat-icon-button (click)="addVote(suggestion.id)" class="button-field actions-item">
             <mat-icon class="button-icon">thumb_up</mat-icon><span class="button-label"> {{suggestion.vote.amount}}</span></button>
@@ -36,7 +36,7 @@
 
 <mat-card class="add-comment-card card" *ngIf="isLoggedIn()">
     <mat-card-content>
-        <form class="add-comment-form" [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">   
+        <form class="add-comment-form" [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="full-width-form" appearance="standard">
                 <mat-label>Comment</mat-label>
                 <textarea matInput required formControlName="comment"></textarea>

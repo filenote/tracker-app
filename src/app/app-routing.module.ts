@@ -1,3 +1,4 @@
+import { AccountInformationComponent } from './component/account-information/account-information.component';
 import { FeaturePageComponent } from './component/feature-page/feature-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -5,6 +6,8 @@ import { HomeComponent } from './component/home/home.component';
 import { SimpleTrackerComponent } from './component/simple-tracker/simple-tracker.component';
 import { LoginTriggerComponent } from './component/login/login-trigger/login-trigger.component';
 import { RegisterTriggerComponent } from './component/register/register-trigger/register-trigger.component';
+import { AddSuggestionComponent } from './component/add-suggestion/add-suggestion.component';
+import { AuthenticationGuard } from './guard/authentication.guard';
 
 const authRoutes = [
   {
@@ -15,7 +18,7 @@ const authRoutes = [
     path: 'register',
     component: RegisterTriggerComponent
   }
-]
+];
 
 const routes: Routes = [
   {
@@ -33,11 +36,21 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'simple-tracker/new',
+    component: AddSuggestionComponent,
+    canActivate: [ AuthenticationGuard ]
+  },
+  {
     path: 'simple-tracker/:id',
     component: FeaturePageComponent,
     children: [
       ...authRoutes
     ]
+  },
+  {
+    path: 'account',
+    component: AccountInformationComponent,
+    canActivate: [ AuthenticationGuard ]
   },
   {
     path: '**',

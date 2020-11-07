@@ -1,8 +1,40 @@
 .stages {
     display: flex;
-    justify-content: space-evenly;
+    gap: .3em;
 }
 
 .stage {
-    width: 200%;
+  width: 200%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: gray;
+
+  &::after {
+    content: '';
+    background: gray;
+    height: 0.5em;
+    flex-grow: 1;
+  }
+
+  &.active {
+    color: green;
+
+    &::after {
+      background: green;
+    }
+  }
+
+  &:first-child::after {
+    border-radius: 100vw 0 0 100vw;
+  }
+
+  &:last-child::after {
+    border-radius: 0 100vw 100vw 0;
+  }
+
+  &:only-child::after {
+    border-radius: 100vw;
+  }
 }
+
