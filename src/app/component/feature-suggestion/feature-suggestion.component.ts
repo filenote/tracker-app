@@ -20,7 +20,12 @@ export class FeatureSuggestionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  latestStage(): Stage[] {
+  latestStage(): Stage[] | [{name: string, enabled: boolean}] {
+
+    if (this.suggestion.isCanceled) {
+      return [ new Stage("Canceled", false, true) ];
+    }
+
     const currentIndex = this.suggestion.currentStage;
     if (currentIndex === this.suggestion.stages.length - 1) {
       return [ this.suggestion.stages[this.suggestion.stages.length - 1] ];

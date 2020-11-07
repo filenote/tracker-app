@@ -1,3 +1,7 @@
 <div class="stages">
-  <div class="stage" *ngFor="let stage of stages" [class.active]="stage.enabled"> {{ stage.name }} </div>
+  <div class="stage"
+   *ngFor="let stage of stages"
+   [class.active]="stage.enabled"
+   [class.canceled]="!stage.enabled && stage.canceled"
+   > {{ stage.name }} </div>
 </div>

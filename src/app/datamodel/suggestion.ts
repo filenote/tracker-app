@@ -12,4 +12,5 @@ export class Suggestion {
     lastUpdatedDate: string;
     currentStage: number;
     comments: FeatureComment[];
+    isCanceled?: boolean;
 }

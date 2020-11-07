@@ -25,6 +25,14 @@
     }
   }
 
+  &.canceled {
+    color: rgb(164, 0, 0);
+
+    &::after {
+      background:rgb(164, 0, 0);
+    }
+  }
+
   &:first-child::after {
     border-radius: 100vw 0 0 100vw;
   }
