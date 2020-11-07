@@ -5,9 +5,6 @@
       <span class="votes"><span>{{ suggestion.vote.amount }}</span></span>
     </div>
     <span class="date">{{ suggestion.createdDate | date : 'yyyy-MM-ddThh:mm:ss.SSSZZZZZZ' : 'UTC' | timeago : false}}</span>
-    <div class="content">
-      <span class="description">{{ suggestion.description | truncate : 100 }}</span>
-    </div>
-    <app-stage-bar class="action" [stages]="latestStage()"></app-stage-bar>
+    <app-stage-bar [stages]="latestStage()"></app-stage-bar>
   </div>
 </div>
