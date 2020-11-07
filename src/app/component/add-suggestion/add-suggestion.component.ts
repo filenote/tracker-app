@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CustomUploadAdapter } from 'src/app/adapter/custom-upload-adapter';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -16,14 +17,23 @@ export class AddSuggestionComponent implements OnInit {
   submitSuggestionForm = this.fb.group({
     title: ['', [Validators.required]],
     description: ['', [ Validators.required ]],
-    text: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]]
   });
+
+  editorConfig = {
+    toolbar: [
+      'heading', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+      '|', 'indent', 'outdent',
+      '|', 'blockQuote', 'insertTable'
+    ]
+  };
+
+  loading = false;
 
   constructor(
     private fb: FormBuilder,
     private suggestionService: SuggestionService,
-    private dialogRef: MatDialogRef<AddSuggestionComponent>
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,13 +46,15 @@ export class AddSuggestionComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.loading = true;
     if (this.submitSuggestionForm.valid) {
       this.suggestionService.insertSuggestion({
         title: this.submitSuggestionForm.get('title').value,
         description: this.submitSuggestionForm.get('description').value,
         email: this.submitSuggestionForm.get('email').value
       }).subscribe((response) => {
-        this.dialogRef.close(response);
+        this.loading = false;
+        this.router.navigate(['simple-tracker']);
       });
     }
   }
