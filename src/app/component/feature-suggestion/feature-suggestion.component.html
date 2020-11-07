@@ -1,6 +1,9 @@
 <div class="feature">
   <div class="feature__card">
-    <span class="title">{{ suggestion.title }}</span>
+    <div class="title-bar">
+      <span class="title">{{ suggestion.title }}</span>
+      <span class="votes"><span>{{ suggestion.vote.amount }}</span></span>
+    </div>
     <span class="date">{{ suggestion.createdDate | date | timeago: false }}</span>
     <div class="content">
       <span class="description">{{ suggestion.description | truncate : 100 }}</span>

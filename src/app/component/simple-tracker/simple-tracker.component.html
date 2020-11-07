@@ -16,7 +16,6 @@
     class="suggestion"
     *ngFor="let suggestion of suggestions; let i = index;"
     [suggestion]="suggestion"
-    [class.active]="active[i]"
-    (click)="toggleActive(i)"></app-feature-suggestion>
+    [routerLink]="[suggestion.id]"></app-feature-suggestion>
 </div>
 <router-outlet></router-outlet>

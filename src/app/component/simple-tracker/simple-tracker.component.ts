@@ -13,7 +13,6 @@ export class SimpleTrackerComponent implements OnInit {
 
   suggestions: Suggestion[];
   isLoading: boolean;
-  active: boolean[];
 
   constructor(
     private suggestionService: SuggestionService,
@@ -26,7 +25,6 @@ export class SimpleTrackerComponent implements OnInit {
       .subscribe((response: Suggestion[]) => {
         this.suggestions = response;
         this.isLoading = false;
-        this.active = new Array(this.suggestions.length).fill(false);
       });
   }
 
@@ -34,10 +32,5 @@ export class SimpleTrackerComponent implements OnInit {
     this.router.navigate(['simple-tracker', 'new'], { queryParams: {
       from: 'simple-tracker'
     }});
-  }
-
-  toggleActive(index: number): void {
-    this.active[index] = !this.active[index];
-    console.log(this.active);
   }
 }

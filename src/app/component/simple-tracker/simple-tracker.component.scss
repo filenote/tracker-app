@@ -19,11 +19,3 @@
   grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
   gap: 1em;
 }
-
-.suggestion {
-  background:white;
-}
-
-.suggestion.active {
-  z-index: 100;
-}
