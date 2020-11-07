@@ -16,9 +16,16 @@ export class AddSuggestionComponent implements OnInit {
   submitSuggestionForm = this.fb.group({
     title: ['', [Validators.required]],
     description: ['', [ Validators.required ]],
-    text: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]]
   });
+
+  editorConfig = {
+    toolbar: [ 
+      'heading', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+      '|', 'indent', 'outdent',
+      '|', 'blockQuote', 'insertTable'
+    ]
+  }
 
   constructor(
     private fb: FormBuilder,
