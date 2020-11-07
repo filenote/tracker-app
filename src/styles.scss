@@ -1,10 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-/**
-* Generated theme by Material Theme Generator
-* https://materialtheme.arcsine.dev
-*/
+
+.spinner__1 {
+  margin: auto 0;
+  gap: .25em;
+}
+
+.spinner__1 > div {
+  width: 1em;
+  height: 1em;
+  background-color: rgba(0, 0, 0, .3);
+  border-radius: 100%;
+  display: inline-block;
+  animation: sk-bouncedelay .9s infinite ease-in-out both;
+}
+
+.spinner__1 > .bounce1 {
+  animation-delay: -.5s;
+}
+
+.spinner__1 > .bounce2 {
+  animation-delay: -0.2s;
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1.0);
+  }
+}
 
 @import '~@angular/material/theming';
 // Include the common styles for Angular Material. We include this here so that you only

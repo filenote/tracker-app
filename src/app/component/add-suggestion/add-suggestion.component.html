@@ -1,19 +1,29 @@
 <h2>Submit Suggestion</h2>
-<form class="submit-suggestion-form" [formGroup]="submitSuggestionForm" (ngSubmit)="onSubmit()">
+<form class="submit-suggestion-form" [formGroup]="submitSuggestionForm">
     <mat-form-field class="full-width-form" appearance="standard">
-        <mat-label>Title</mat-label>
-        <input matInput required formControlName="title">
+      <mat-label>Title</mat-label>
+      <input matInput required formControlName="title">
     </mat-form-field>
 
     <mat-label>Description</mat-label>
     <ckeditor [editor]="editor" [config]="editorConfig" (ready)="onReady($event)" formControlName="description"></ckeditor>
-    
+
     <mat-form-field class="full-width-form" appearance="standard">
-        <mat-label>Email</mat-label>
-        <input matInput required email formControlName="email">
+      <mat-label>Email</mat-label>
+      <input matInput required email formControlName="email">
     </mat-form-field>
-    <div class="sub-button" style="display:flex; justify-content:flex-end;">
-        <button mat-button type="submit" color="primary">Submit</button>
+
+    <div class="submit-suggestion__actions">
+      <div class="button-container">
+        <div class="spinner-container" *ngIf="loading">
+          <div class="spinner__1">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" [disabled]="loading" (click)="onSubmit()">Submit</button>
+      </div>
     </div>
 
 </form>
