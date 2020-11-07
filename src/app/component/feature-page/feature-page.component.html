@@ -20,7 +20,7 @@
         <mat-card-subtitle>{{parse(suggestion.createdDate) | timeago:false}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        {{suggestion.description}}
+        <span [innerHtml]="suggestion.description"></span>
     </mat-card-content>
     <mat-card-actions class="actions-container">
         <span class="content-desktop stages-container actions-item">

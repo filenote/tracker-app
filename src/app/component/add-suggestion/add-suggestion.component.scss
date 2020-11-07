@@ -1,3 +1,27 @@
 .full-width-form {
     display:block;
 }
+
+.submit-suggestion__actions {
+  display:flex;
+  justify-content:flex-end;
+}
+
+button {
+  width: 100px;
+}
+
+.spinner-container {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.button-container {
+  display: inline-block;
+  position: relative;
+}
